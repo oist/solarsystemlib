@@ -1,0 +1,16 @@
+// vim: set ts=2 sw=2 et fenc=utf-8 ff=unix :
+apply plugin: 'java'
+
+version = currentVersion
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  // Use JUnit test framework
+  testCompile 'junit:junit:4.12'
+}
