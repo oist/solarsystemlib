@@ -1,3 +1,7 @@
+#
+mvn-repo/*
+~mvn-repo/.gitkeep
+
 # vim
 tags
 *~
