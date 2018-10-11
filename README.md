@@ -10,7 +10,7 @@ Installation
 This project is provided on maven repository.
 
 ```text
-TODO: bla bla bla bla...
+https://raw.githubusercontent.com/oist/solarsystemlib-repo/master/
 ```
 
 License

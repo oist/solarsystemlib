@@ -1,6 +1,8 @@
 // vim: set ts=2 sw=2 et fenc=utf-8 ff=unix :
 apply plugin: 'java'
+apply plugin: 'maven'
 
+group = 'jp.oist.unit.ios'
 version = currentVersion
 
 sourceCompatibility = '1.8'
@@ -13,4 +15,38 @@ repositories {
 dependencies {
   // Use JUnit test framework
   testCompile 'junit:junit:4.12'
+}
+
+import java.nio.file.Paths;
+
+ext {
+  mavenRepository = Paths.get(project.projectDir.toString(), 'mvn-repo')
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      repository(url: uri(mavenRepository))
+    }
+  }
+  doLast {
+    pom {
+      project {
+        inceptionYear '2018'
+        packaging 'jar'
+        licenses {
+          license {
+            name 'BSD 3-Clause License'
+            url 'https://opensource.org/licenses/BSD-3-Clause' 
+            distribution 'repo'
+          }
+        }
+      }
+    }.writeTo("${mavenRepository}/pom.xml")
+  }
+
+  copy {
+      from Paths.get(project.projectDir.toString(), 'README.md')
+      into mavenRepository
+  }
 }
